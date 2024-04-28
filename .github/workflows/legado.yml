@@ -60,6 +60,13 @@ jobs:
             set_env APP_RELEASE      $APP_BUILD_APK
         fi
 
+    - name: 上传固件文件
+      if: steps.compile.outcome == 'success' && env.UPLOAD_FIRMWARE == 'true'
+      uses: actions/upload-artifact@main
+      with:
+        name: OpenWrt_firmware_${{matrix.target}}_${{ env.FILE_TIME }}
+        path: /opt/legado/app/build/outputs/apk/app/release/*.apk
+
     - name: create release
       id: create_release
       if: steps.release_apk.outputs.if_publish == 'true'
