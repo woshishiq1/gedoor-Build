@@ -1,6 +1,5 @@
 #!/bin/sh
 #本脚本用来个性化定制app,不会修改任何程序代码
-source $GITHUB_WORKSPACE/action_util.sh
 #去除河蟹,默认启用
 function app_clear_18plus() 
 {
