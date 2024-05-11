@@ -93,3 +93,17 @@ jobs:
         asset_name: ${{ env.APP_RELEASE_NAME }}
         asset_content_type: application/vnd.android.package-archive
 
+
+    - name: 删除运行记录
+      uses: Mattraks/delete-workflow-runs@v2
+      with:
+        retain_days: 30     #保留最后多少记录不删除
+        keep_minimum_runs: 0
+
+    - name: 删除自动发布的旧固件
+      uses: shidahuilang/delete-older-releases@main
+      with:
+        keep_latest: 20         #保留多少个releases不删除
+        delete_tags: true
+      env:
+        GITHUB_TOKEN: ${{ secrets.MY_GITHUB_TOKEN }}
