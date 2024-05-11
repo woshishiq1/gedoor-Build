@@ -101,14 +101,3 @@ jobs:
         name: ${{ env.APP_UPLOAD_NAME }}
         path: ${{ env.APP_UPLOAD }}
 
-    - name: upload to webdav
-      if: success()
-      shell: bash
-      env:
-        WEBDAV_URL: ${{ github.event.inputs.webdav_url }}
-        WEBDAV_AUTH: ${{ github.event.inputs.webdav_auth }}
-        WEBDAV_UPLOAD: ${{ github.event.inputs.webdav_upload }}
-      run: |
-        source $GITHUB_WORKSPACE/action_util.sh
-        webdav_upload $APP_UPLOAD/*.apk
-        
