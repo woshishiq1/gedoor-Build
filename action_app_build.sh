@@ -1,5 +1,4 @@
 #!/bin/sh
-source $GITHUB_WORKSPACE/action_util.sh
 #开始构建
 function app_build()
 {
